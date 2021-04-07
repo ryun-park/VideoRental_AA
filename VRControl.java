@@ -45,9 +45,8 @@ public class VRControl {
 
         List<Rental> customerRentals = foundCustomer.getRentals();
         for (Rental rental : customerRentals) {
-            if (rental.getVideo().getTitle().equals(videoTitle) && rental.getVideo().isRented()) {
+            if (rental.getVideoTitle().equals(videoTitle) && rental.getVideo().isRented()) {
                 rental.returnVideo();
-                rental.getVideo().setRented(false);
                 break;
             }
         }
