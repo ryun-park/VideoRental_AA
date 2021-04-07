@@ -121,10 +121,7 @@ public class VRControl {
 
         Rental rental = new Rental(foundVideo);
         foundVideo.setRented(true);
-
-        List<Rental> customerRentals = foundCustomer.getRentals();
-        customerRentals.add(rental);
-        foundCustomer.setRentals(customerRentals);
+        foundCustomer.addRental(rental);
     }
 
     public void registerCustomer(String name) {
@@ -133,7 +130,6 @@ public class VRControl {
     }
 
     public void registerVideo(String title, int videoType, int priceCode) {
-
         Date registeredDate = new Date();
         Video video = new Video(title, videoType, priceCode, registeredDate);
         videos.add(video);
