@@ -57,9 +57,9 @@ public class Rental {
 		if ( getDaysRented() <= 2) return limit ;
 
 		switch ( video.getVideoType() ) {
-			case VideoType.VHS: limit = 5 ; break ;
-			case VideoType.CD: limit = 3 ; break ;
-			case VideoType.DVD: limit = 2 ; break ;
+			case Video.VHS: limit = 5 ; break ;
+			case Video.CD: limit = 3 ; break ;
+			case Video.DVD: limit = 2 ; break ;
 		}
 		return limit ;
 	}
@@ -71,7 +71,7 @@ public class Rental {
 
 	public double getCharge(int daysRented){
 		double charge = 0;
-		if(video.getPriceCode() == VideoRelease.REGULAR){
+		if(video.getPriceCode() == Video.REGULAR){
 			charge += 2;
 			if (daysRented > 2)
 				charge += (daysRented - 2) * 1.5;
