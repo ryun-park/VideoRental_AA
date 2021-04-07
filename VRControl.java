@@ -10,13 +10,7 @@ public class VRControl {
     }
 
     public void clearRentals(String customerName) {
-        Customer foundCustomer = null;
-        for (Customer customer : customers) {
-            if (customer.getName().equals(customerName)) {
-                foundCustomer = customer;
-                break;
-            }
-        }
+        Customer foundCustomer = getCustomer(customerName);
 
         if (foundCustomer == null) {
             System.out.println("No customer found");
@@ -33,8 +27,7 @@ public class VRControl {
         }
     }
 
-    public void returnVideo(String customerName, String videoTitle) {
-
+    private Customer getCustomer(String customerName) {
         Customer foundCustomer = null;
         for (Customer customer : customers) {
             if (customer.getName().equals(customerName)) {
@@ -42,6 +35,12 @@ public class VRControl {
                 break;
             }
         }
+        return foundCustomer;
+    }
+
+    public void returnVideo(String customerName, String videoTitle) {
+
+        Customer foundCustomer = getCustomer(customerName);
         if (foundCustomer == null) return;
 
         List<Rental> customerRentals = foundCustomer.getRentals();
@@ -95,13 +94,7 @@ public class VRControl {
     }
 
     public void getCustomerReport(String customerName) {
-        Customer foundCustomer = null;
-        for (Customer customer : customers) {
-            if (customer.getName().equals(customerName)) {
-                foundCustomer = customer;
-                break;
-            }
-        }
+        Customer foundCustomer = getCustomer(customerName);
 
         if (foundCustomer == null) {
             System.out.println("No customer found");
@@ -112,13 +105,7 @@ public class VRControl {
     }
 
     public void rentVideo(String customerName, String videoTitle) {
-        Customer foundCustomer = null;
-        for (Customer customer : customers) {
-            if (customer.getName().equals(customerName)) {
-                foundCustomer = customer;
-                break;
-            }
-        }
+        Customer foundCustomer = getCustomer(customerName);
 
         if (foundCustomer == null) return;
 
