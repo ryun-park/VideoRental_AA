@@ -59,4 +59,9 @@ public class Customer {
         }
         return result;
     }
+
+    void printCustomer() {
+        System.out.println("Name: " + getName() +
+                "\tRentals: " + getRentals().size());
+    }
 }

@@ -1,7 +1,12 @@
 import java.util.Date;
 
 public class Rental {
-    public enum RentalStatus {
+	void printRental() {
+		System.out.print("\tTitle: " + getVideo().getTitle() + " ");
+		System.out.print("\tPrice Code: " + getVideo().getPriceCode());
+	}
+
+	public enum RentalStatus {
         RENTED, RETURNED;
     }
 
