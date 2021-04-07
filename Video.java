@@ -1,52 +1,33 @@
 import java.util.Date;
 
-public class Video {
+public abstract class Video {
+	public enum VideoCode{
+		REGULAR(1),
+		NEW_RELEASE(2);
+		VideoCode(int i) {
+		}
+	}
+
+	public static VideoCode convertVideoCode(int priceCode){
+		if(priceCode == 1) return VideoCode.REGULAR;
+		else if(priceCode == 2) return VideoCode.NEW_RELEASE;
+		return null;
+	}
+
 	private String title ;
-
-	private int priceCode ;
-	public static final int REGULAR = 1 ;
-	public static final int NEW_RELEASE =2 ;
-
-	private int videoType ;
-	public static final int VHS = 1 ;
-	public static final int CD = 2 ;
-	public static final int DVD = 3 ;
-
+	private VideoCode priceCode ;
 	private Date registeredDate ;
 	private boolean rented ;
 
-	public Video(String title, int videoType, int priceCode, Date registeredDate) {
-		this.setTitle(title) ;
-		this.setVideoType(videoType) ;
-		this.setPriceCode(priceCode) ;
-		this.registeredDate = registeredDate ;
+	public Video() {
+		this.registeredDate = new Date();
 	}
 
-	public int getLateReturnPointPenalty() {
-		int pentalty = 0 ;
-		switch ( videoType ) {
-			case VHS: pentalty = 1 ; break ;
-			case CD: pentalty = 2 ; break ;
-			case DVD: pentalty = 3 ; break ;
-		}
-		return pentalty ;
-	}
-
-	public int getLimit(){
-		int limit=0;
-		switch ( videoType ) {
-			case VHS: limit = 5 ; break ;
-			case CD: limit = 3 ; break ;
-			case DVD: limit = 2 ; break ;
-		}
-		return limit;
-	}
-
-	public int getPriceCode() {
+	public VideoCode getPriceCode() {
 		return priceCode;
 	}
 
-	public void setPriceCode(int priceCode) {
+	public void setPriceCode(VideoCode priceCode) {
 		this.priceCode = priceCode;
 	}
 
@@ -66,11 +47,12 @@ public class Video {
 		this.rented = rented;
 	}
 
-	public void setVideoType(int videoType) {
-		this.videoType = videoType;
-	}
-
 	void printVideo() {
 		System.out.println("Price code: " + getPriceCode() + "\tTitle: " + getTitle());
 	}
+
+	public abstract int getLateReturnPointPenalty();
+
+	public abstract int getLimit();
+
 }

@@ -5,6 +5,7 @@ import java.util.List;
 public class VRControl {
     List<Customer> customers = new ArrayList<Customer>();
     List<Video> videos = new ArrayList<Video>();
+    VideoFactory videoSystem = new VideoSystem();
 
     public VRControl() {
     }
@@ -125,8 +126,7 @@ public class VRControl {
     }
 
     public void registerVideo(String title, int videoType, int priceCode) {
-        Date registeredDate = new Date();
-        Video video = new Video(title, videoType, priceCode, registeredDate);
+        Video video = videoSystem.createVideo(title,videoType,priceCode);
         videos.add(video);
     }
 }
