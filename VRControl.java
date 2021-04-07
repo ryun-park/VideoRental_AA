@@ -110,7 +110,7 @@ public class VRControl {
 
         Video foundVideo = null;
         for (Video video : videos) {
-            if (video.getTitle().equals(videoTitle) && video.isRented() == false) {
+            if (video.getTitle().equals(videoTitle) && !video.isRented()) {
                 foundVideo = video;
                 break;
             }
